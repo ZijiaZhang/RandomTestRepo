@@ -16,6 +16,7 @@ const getTemp = ({text, img}, rev) => `<div style="display: flex; ${rev ? 'flex-
 function App() {
   const [data, setData] = useState([]);
   const [rev, setRev] = useState(true);
+    const [wide, setWide] = useState('');
   let r = rev;
   console.log(data);
   return (
@@ -37,8 +38,14 @@ function App() {
                            prevState[index]['img'] = evt.target.value
                            return [...prevState]
                        })}
-          /> </div>
+          />
+              <button onClick={()=> setData((prevState) => {
+                  return prevState.filter((d, i) => i!==index);
+              })}>-</button>
+          </div>
         })}
+          <div>wide</div>
+          <div><textarea style={{width: '40%'}} value={wide} onChange={(evt)=> setWide(evt.target.value)}/></div>
         <button onClick={()=> setData((prevState) => {
             return [...prevState, {text: '', img: ''}]
         })}>+</button>
@@ -50,6 +57,9 @@ function App() {
                 r = !r;
                 return getTemp(d, !r)
             }).join('')}
+            {wide.length && `<div style="margin-top: 1%; margin-bottom: 2%;">
+  <img decoding="async" class="alignnone wp-image-11194 size-full" src="${wide}" alt="">
+</div>`}
         </div>
     </div>
   );
