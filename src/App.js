@@ -55,7 +55,12 @@ function App() {
         <div>
             {data.map((d) => {
                 r = !r;
-                return getTemp(d, !r)
+                const trimedData = {
+                  text: d.text,
+                  img: d.img,
+                };
+                trimedData.text = trimedData.text.replace(/\r?\n|\r/g, "");
+                return getTemp(trimedData, !r)
             }).join('')}
             {wide.length && `<div style="margin-top: 1%; margin-bottom: 2%;">
   <img decoding="async" class="alignnone wp-image-11194 size-full" src="${wide}" alt="">
