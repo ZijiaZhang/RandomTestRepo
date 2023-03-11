@@ -3,7 +3,7 @@ import {useState} from "react";
 
 
 const getTemp = ({text, img}, rev) => `<div style="display: flex; ${rev ? 'flex-direction: row-reverse': ''}; align-items: center;">
-  <div style="padding: 0 2%; width: 50%; letter-spacing: 2px; text-indent:2em">
+  <div style="padding: 0 5%; width: 50%; letter-spacing: 2px; text-indent:2em">
     ${text}
   </div>
   <div style="width: 50%;">
